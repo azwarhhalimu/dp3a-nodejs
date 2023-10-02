@@ -1,0 +1,85 @@
+<div class="container-fluid" id="container-wrapper">
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <a href="/admin/data_terpilah?id_kategori_data_terpilah=<%=parem.id_kategori_data_terpilah%>&id_data_terpilah=<%=parem.id_data_terpilah%>"><i class="fa fa-chevron-left"></i> Kembali</a>
+    <h1 class="h3 mb-0 text-gray-800">Data Indikator Kuisioner</h1>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="./">Home</a></li>
+      <li class="breadcrumb-item">Kategori Data Terpilah</li>
+      <li class="breadcrumb-item active" aria-current="page">Data Indikator Kuisioner</li>
+    </ol>
+  </div>
+
+  <div class="col-lg-8" style="margin: auto; ">
+    <div class="card">
+      <div class="card-header" style="font-weight: bold!important;">
+        Data Indikator Kuisiner
+        <button data-toggle="modal" data-target="#exampleModal" class="btn btn-success float-right">Tambah Indikator Kuisioner</button>
+      </div>
+      <div class="card-body">
+        <table style="text-align: left;" class="table table-borderd" id="table">
+          <thead>
+
+            <tr style="font-weight: bold !important; background: rgb(41, 147, 240); color: #fff;">
+              <td>No</td>
+              <td>Id Data Indikator</td>
+              <td>Indikator Kuisioner</td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            <% 
+            i=0;
+            for(data of data){%>
+            <tr>
+              <td><%=i+1%></td>
+              <td><%=data.id_indikator_kuisioner%></td>
+              <td><%=data.indikator_kuisioner%></td>
+              <td width="100px" style="text-align: right;">
+                <a href="/admin/edit/indikator-kuisioner?id_data_terpilah=<%=data.id_data_terpilah%>&id_kategori_data_terpilah=<%=data.id_kategori_data_terpilah%>&id_indikator_kuisioner=<%=data.id_indikator_kuisioner%>">Edit</a> &nbsp;
+                <a href="/admin/hapus-data-indikator-kuisioner?id=<%=data.id_indikator_kuisioner%>" onclick="return confirm('Apakah ada ingin hapus data ini?')">Hapus</a>
+              </td>
+            </tr>
+            <%i++}%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Modal Logout -->
+
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form method="POST" action="">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Tambah Indikator Kuisoner</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-4 col-form-label">Nama Indikator Kuisioner</label>
+            <div class="col-sm-8">
+              <input required type="text" name="indikator_kuisioner" class="form-control" id="inputPassword">
+
+              <input type="hidden" value="<%=id_instansi%>" name="id_instansi" />
+              <input type="hidden" value="<%=parem.id_data_terpilah%>" name="id_data_terpilah" />
+              <input type="hidden" value="<%=parem.id_kategori_data_terpilah%>" name="id_kategori_data_terpilah" />
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+          <button type="submit" class="btn btn-primary">Simpan</button>
+        </div>
+    </form>
+  </div>
+</div>

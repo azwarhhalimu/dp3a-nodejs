@@ -1,0 +1,81 @@
+<div class="container-fluid" id="container-wrapper">
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <a href="/admin/kategori-data-terpilah.html" class="btn btn-danger"><i class="fa fa-chevron-left"></i> Kembali</a>
+    <h1 class="h3 mb-0 text-gray-800">Tambah Data Terpilah</h1>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="./">Home</a></li>
+
+      <li class="breadcrumb-item active" aria-current="page">Data Instansi</li>
+    </ol>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <a class="btn btn-primary" href="/admin/tambah-data-terpilah.html?id_kategori_data_terpilah=<%=id_kategori_data_terpilah%>">Tambah Data Terpilah</a>
+      <!-- Form Basic -->
+      <div class="card mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+
+          <h6 class="m-0 font-weight-bold text-primary">Data terpilah - <?= $query['kategori_data_terpilah'] ?></h6>
+        </div>
+        <div class="card-body">
+          <table class="table" id="table">
+            <thead>
+              <tr>
+                <td>No</td>
+                <td>Sumber Data</td>
+                <td>Data Terpilah</td>
+                <td>Aksi</td>
+              </tr>
+            </thead>
+            <tbody>
+              <%
+              let i=1;
+              for( data of data){%>
+              <tr>
+                <td><%= i %></td>
+                <td>
+                  <% 
+                 if(data.nama_instansi==""){%>
+                  <span style="background:#FE7070; color:#FFF; font-size: 10px; border-radius: 2px;" class="label label-danger">Sumber Data belum di atur</span>
+                  <% }else{ %>
+                  <%=data.nama_instansi%>
+                  <% } %>
+
+
+                </td>
+                <td>
+                  <%= data['data_terpilah'] %>
+
+                  <hr />
+                  Label Tabel : <span style="font-weight: bold;"><%= data['label_tabel'] %></span>
+                  <hr />
+                  <div>
+                    <a href="/admin/data-indikator.html?id_data_terpilah=<%=data.id_data_terpilah%>&id_kategori_data_terpilah=<%=data.id_kategori_data_terpilah%>" class="btn btn-primary"><i class="fa fa-list"></i> Data Indikator (<%= data.list_data_terpilah.length %>)</a>
+                    <!-- <button class="btn btn-success" onclick="return tambah_data('<%= data.id_kategori_data_terpilah %>', '<%= data.id_data_terpilah %>', '<%= data.id_instansi%>')"><i class="fa fa-plus"></i> Tambah Indikator</button> -->
+                    <!-- <a href="<?= createUrl("admin/komponen_nilai?id_data_terpilah=" . $query['id_data_terpilah']) ?>" class="btn btn-warning">Komponen Nilai</a> -->
+                  </div>
+                </td>
+                <td style="text-align: right;">
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Opsi
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="/admin/edit-data-terpilah.html?id=<%=data.id_data_terpilah%>">Edit</a>
+                      <a class="dropdown-item" onclick="return confirm('Apakah anda ingin hapus data ini?')" href="/admin/delete-data-terpilah?id=<%=data.id_data_terpilah%>">Hapus</a>
+                      <!-- / <a class="dropdown-item" href="<?= createUrl('admin/pindah_kategori_data_terpilah?id_data_terpilah=' . $query['id_data_terpilah'] . '&id_kategori_data_terpilah=' . $query['id_kategori_data_terpilah']) ?>">Pindahkan Ke Kategori</a> -->
+                    </div>
+
+                  </div>
+                </td>
+              </tr>
+              <% i++
+            } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Page level custom scripts -->

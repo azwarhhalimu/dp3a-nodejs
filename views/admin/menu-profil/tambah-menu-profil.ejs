@@ -1,0 +1,61 @@
+<div id="content">
+    <div class="container-fluid" id="container-wrapper">
+        <div class="d-sm-flex align-items-center justify-content-between mb-8">
+            <h1 class="h3 mb-0 text-gray-800">
+                <%=isEdit?"Edit":"Tambah"%> Menu Profil
+            </h1>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="./">Home</a></li>
+                <li class="breadcrumb-item"><a href="/admin/menu-profil.html">Menu Profil</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <%=isEdit?"Edit":"Tambah"%> Menu Proifl
+                </li>
+            </ol>
+        </div>
+        <div>
+            <a href="/admin/menu-profil.html" class="btn btn-primary mb-1">Kembali</a>
+            <div class="card mb-2 col-lg-9" style="margin: auto;">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                </div>
+                <div class="card-body">
+                    <form action="" method="POST">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Judul Menu Profil</label>
+                            <input value="<%=typeof data.judul !=" undefined"?data.judul:''%>" autocomplete="off"
+                            type="text" required name="judul" class="form-control"
+                            id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan judul">
+                        </div>
+                        <div class="form-group">
+                            <label for="isi">Isi Berita</label>
+                            <textarea name="isi" class="form-control" id="summernote"
+                                placeholder="Isi Berita"><%=typeof data.isi !=" undefined" ?data.isi:''%></textarea>
+                        </div>
+                        <button type="submit" name="simpan_profil" class="btn btn-primary">Simpan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+    <script>
+        $(function () {
+            $('#summernote').summernote({
+                tabsize: 3,
+                toolbar: [
+                    // [groupName, [list of button]]
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                ],
+                placeholder: 'Ketikkan keterangan lokasi disini',
+                height: '200'
+            });
+
+
+        })
+    </script>
+</div>

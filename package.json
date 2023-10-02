@@ -1,0 +1,39 @@
+{
+  "name": "dp3a-nodejs",
+  "version": "1.0.0",
+  "description": "SISTIM INFORMASI GENDERN DAN ANAK SIGA. APLIKASI WEBSITE UNTUK MENGINPUT DATA SIGA ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js -e ejs,js,css",
+    "start": "node app.js"
+  },
+  "keywords": [
+    "aplikasi",
+    "siga"
+  ],
+  "author": "AZWAR BUTON",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.5.0",
+    "body-parser": "^1.20.2",
+    "connect-flash": "^0.1.1",
+    "ejs": "^3.1.9",
+    "ejs-layout": "^1.0.15",
+    "ejs-template": "^0.1.0",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.17.3",
+    "gm": "^1.25.0",
+    "image-clipper": "^0.4.4",
+    "multer": "^1.4.5-lts.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.6.0",
+    "nodejs-base64": "^2.0.0",
+    "nodemon": "^3.0.1",
+    "rc4-crypt": "^1.0.4",
+    "reload": "^3.2.1",
+    "sharp": "^0.32.5"
+  }
+}

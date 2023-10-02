@@ -1,0 +1,59 @@
+<div id="content">
+    <link href="/r-admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="/r-admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/r-admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable(); // ID From dataTable with Hover
+        });
+    </script>
+    <div class="container-fluid" id="container-wrapper">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Galeri</h1>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="./">Home</a></li>
+                <li class="breadcrumb-item"><a href="/index.php/admin/galeri">Galeri</a></li>
+            </ol>
+        </div>
+        <div>
+            <a href="/admin/tambah-galeri.html" class="btn btn-primary mb-1">Tambah Galeri</a>
+            <div class="card mb-2 col-lg-12" style="margin: auto;">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                </div>
+                <div class="card-body">
+                    <table id="table" class="table">
+                        <thead>
+                            <tr style="font-weight: bold;">
+                                <td>No</td>
+                                <td>Image</td>
+                                <td>Label</td>
+                                <td>Aksi</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% let i=1 ; for(data of data){%>
+                                <tr>
+                                    <td>
+                                        <%=i%>.
+                                    </td>
+                                    <td>
+                                        <img style="border-radius:3px;"
+                                            src="/images/galeri?size=100&target=<%=data.id_galeri%>" />
+                                    </td>
+                                    <td>
+                                        <%=data.label%>
+                                    </td>
+                                    <td>
+                                        <a onclick="return confirm('Apakah anda ingin hapus data ini?')"
+                                            href="/admin/hapus-galeri.html?id_galeri=<%=data.id_galeri%>"
+                                            class="btn btn-outline-danger mb-1">Hapus</a>
+                                    </td>
+                                </tr>
+                                <% i++; }%>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

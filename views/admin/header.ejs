@@ -1,0 +1,78 @@
+<div id="content">
+
+    <div class="container-fluid" id="container-wrapper">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Header</h1>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="./">Home</a></li>
+                <li class="breadcrumb-item"><a href="/index.php/admin/header">Header</a></li>
+            </ol>
+        </div>
+        <div>
+            <div class="card mb-2 col-lg-12" style="margin: auto;">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                </div>
+                <div class="card-body">
+                    <table style="width:100%; text-align: center; ">
+                        <tr>
+                            <td>
+                                <% if(fs.existsSync("./public/header-image/logo.jpg")){%>
+                                    <img src="/images/header?target=logo&size=100" />
+                                    <hr />
+                                    <a onclick="return confirm('Apakah anda ingin menghapus data ini?')"
+                                        href="/admin/hapus-header.html?target=logo" class="btn btn-danger">Hapus</a>
+                                    <%}else{%>
+                                        Belum Di upload
+                                        <% }%>
+
+
+                                            <div style="font-weight: bold;">
+                                                Logo
+                                            </div>
+                                            <a class="btn btn-success" href="/admin/ganti-header.html?target=logo">Ganti
+                                                Logo</a>
+                            </td>
+                            <td>
+                                <% if(fs.existsSync("./public/header-image/gambar1.jpg")){%>
+                                    <img src="/images/header?target=gambar1&size=100" />
+                                    <hr />
+                                    <a onclick="return confirm('Apakah anda ingin menghapus data ini?')"
+                                        href="/admin/hapus-header.html?target=gambar1" class="btn btn-danger">Hapus</a>
+                                    <%}else{%>
+                                        Belum Di upload
+                                        <% }%>
+
+
+
+                                            <div style="font-weight: bold;">
+                                                Logo
+                                            </div>
+                                            <a class="btn btn-success"
+                                                href="/admin/ganti-header.html?target=gambar1">Ganti
+                                                Gambar 1</a>
+                            </td>
+                            <td>
+                                <% if(fs.existsSync("./public/header-image/gambar2.jpg")){%>
+                                    <img src="/images/header?target=gambar2&size=100" />
+                                    <hr />
+                                    <a onclick="return confirm('Apakah anda ingin menghapus data ini?')"
+                                        href="/admin/hapus-header.html?target=gambar2" class="btn btn-danger">Hapus</a>
+
+                                    <%}else{%>
+                                        Belum Di upload
+                                        <% }%>
+                                            <br />
+                                            <div style="font-weight: bold;">
+                                                Logo
+                                            </div>
+                                            <a class="btn btn-success"
+                                                href="/admin/ganti-header.html?target=gambar2">Ganti
+                                                Gambar 2</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

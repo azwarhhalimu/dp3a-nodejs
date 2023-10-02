@@ -1,0 +1,30 @@
+<div id="content">
+    <div class="container-fluid" id="container-wrapper">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <button onclick="return window.history.back(-1)" class="btn btn-danger">Kembali</button>
+            <h1 class="h3 mb-0 text-gray-800">Tambah Indikator Kuisioner</h1>
+
+        </div>
+        <div class="col-lg-5" style="margin: auto;">
+            <div class="card">
+
+                <div class="card-body">
+
+                    <form action="" method="POST">
+                        <div id="multiple-form">
+                            <div class="form-group">
+                                <label for="bbbb   ">Indikator Kuisioner</label>
+                                <textarea name="indikator_kuisioner" required="" class="form-control"
+                                    placeholder="Masukkan data"><%= (typeof data.indikator_kuisioner!="undefined"?data.indikator_kuisioner:"")%></textarea>
+
+                            </div>
+                        </div>
+                        <button type="submit" id="tambah-data-kuisioner" name="simpan_data_kuisioner"
+                            class="btn btn-primary">Simpan Data</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

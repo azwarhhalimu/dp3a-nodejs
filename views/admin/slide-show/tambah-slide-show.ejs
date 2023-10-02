@@ -1,0 +1,99 @@
+<div id="content">
+    <div class="container-fluid" id="container-wrapper">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Tambah Slide Show</h1>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="./">Home</a></li>
+                <li class="breadcrumb-item"><a href="/index.php/admin/slide_show"> Slide Show</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Tambah Slide Slide</li>
+            </ol>
+        </div>
+        <div>
+            <a href="/admin/slide-show.html" class="btn btn-danger mb-1">Kembali</a>
+            <div class="card mb-2 col-lg-8" style="margin: auto;">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                </div>
+                <div class="card-body">
+                    <form action="" method="POST" enctype="multipart/form-data">
+
+                        <div class="form-group">
+                            <label for="label">Label Slide Sohw</label>
+                            <input type="text" name="label" required class="form-control" id="exampleInputEmail1"
+                                aria-describedby="label" placeholder="Judul Slide Show">
+                            <small id="judul" class="form-text text-muted">Masukkan judul berita</small>
+                        </div>
+
+
+                        <div id="v-img">
+                            <img src="" id="hasil-crop" style="width:500px;" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="judul">Masukkan Gambar Slide Show</label>
+                            <div class="custom-file">
+                                <input accept="image/*" type="file" name="foto" required class="custom-file-input"
+                                    id="file">
+                                <label class="custom-file-label" for="customFile">Pilih File</label>
+                            </div>
+                            <div style="display: none;">
+                                <input type="text" name="imgX1" id="imgX1" />
+                                <input type="text" name="imgY1" id="imgY1" />
+                                <input type="text" name="imgWidth" id="imgWidth" />
+                                <input type="text" name="imgHeight" id="imgHeight" />
+                            </div>
+                        </div>
+
+                        <button type="submit" name="simpan_slide" class="btn btn-primary">Simpan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="/jcrop/css/jquery.Jcrop.min.css" type="text/css" />
+    <script src="/jcrop/js/jquery.Jcrop.min.js"></script>
+
+    <script>
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#hasil-crop').attr('src', e.target.result);
+                    var size;
+                    $('#hasil-crop').Jcrop({
+                        aspectRatio: 16 / 7,
+                        setSelect: [50, 0, 300, 300],
+                        allowResize: false,
+                        onChange: SetCoordinates,
+                        onSelect: SetCoordinates
+                    });
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function SetCoordinates(c) {
+            var ratioW = $('#hasil-crop')[0].naturalWidth / $('#hasil-crop').width();
+            var ratioH = $('#hasil-crop')[0].naturalHeight / $('#hasil-crop').height();
+            var currentRatio = Math.min(ratioW, ratioH);
+
+            $('#imgX1').val(Math.round(c.x * currentRatio));
+            $('#imgY1').val(Math.round(c.y * currentRatio));
+            $('#imgWidth').val(Math.round(c.w * currentRatio));
+            $('#imgHeight').val(Math.round(c.h * currentRatio));
+        }
+
+
+        $(function () {
+
+
+            $("#file").change(function () {
+                $('#v-img').html('   <img src="" id="hasil-crop" style="width:500px;"/>')
+                readURL(this);
+            });
+
+        })
+    </script>
+</div>

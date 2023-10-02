@@ -1,0 +1,85 @@
+<div id="content">
+
+    <div class="container-fluid" id="container-wrapper">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <a href="<%='/admin/show-indikator-kuisioner.html?id_data_terpilah='+id_data_terpilah%>" class="btn
+                btn-danger"><i class="fa fa-chevron-left"></i> Kembali</a>
+            <h1 class="h3 mb-0 text-gray-800">Indikator Kuisioner</h1>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="./">Home</a></li>
+
+                <li class="breadcrumb-item active" aria-current="page">Indikator Kuisioner</li>
+            </ol>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-lg-12" style="margin: auto;">
+                <div class="card mb-4">
+                    <!-- <%=url_back%> -->
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <a href="/admin/tambah-indikator-kuisioner.html?id_data_terpilah=<%=id_data_terpilah%>"
+                            class="btn btn-facebook">Tambah Indikator
+                            Kuisioner</a>
+                        <h6 class="m-0 font-weight-bold text-primary">Data Mitra Instansi</h6>
+                    </div>
+                    <div class="card-body">
+                        <table id="table" class="table table-bordered">
+                            <thead style="font-weight: bold;">
+                                <tr>
+                                    <td rowspan="2">No</td>
+                                    <td rowspan="2">Kuisioner</td>
+                                    <td align="center" colspan="<%=data.tahun.length%>">Tahun</td>
+
+                                </tr>
+                                <tr>
+                                    <% for( tahun of data.tahun){%>
+
+                                        <td>
+                                            <%= tahun.tahun%>
+                                        </td>
+                                        <% }%>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% let i=0; for(data of data.data){%>
+                                    <tr id="c-0">
+                                        <td>
+                                            <%=i+1%>
+                                        </td>
+                                        <td>
+                                            <%=data.indikator_kuisioner%>
+                                                <div>
+                                                    <a href="/admin/delete-indikator-kuisioner.html?id_indikator_kuisioner=<%=data.id_indikator_kuisioner%>"
+                                                        onclick="return confirm('Apakah anda ingin menghapus data ini?')">[Hapus]</a>
+                                                    &nbsp;&nbsp;
+                                                    <a
+                                                        href="/admin/tambah-indikator-kuisioner.html?id_indikator_kuisioner=<%=data.id_indikator_kuisioner%>&target=edit">[Edit]</a>
+                                                </div>
+
+                                        </td>
+                                        <% for(tahun of data.tahun){%>
+                                            <td>
+                                                <div>Laki-laki:<%=tahun.data_gender.laki_laki%>
+                                                </div>
+                                                <div>Perempuan:<%=tahun.data_gender.perempuan%>
+                                                </div>
+                                            </td>
+                                            <%} %>
+
+                                    </tr>
+                                    <% i++; }%>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page level custom scripts -->
+</div>

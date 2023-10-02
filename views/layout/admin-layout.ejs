@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta http-equiv="refresh" content="3550">
+  <meta name="turbo-visit-control" content="reload">
+  <link href="/admin-template/img/logo/logo.png" rel="icon">
+  <title>RuangAdmin - Blank Page</title>
+  <link href="/admin-template/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="/admin-template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="/admin-template/css/ruang-admin.min.css" rel="stylesheet">
+  <!-- <script type="text/javascript" src="https://unpkg.com/@hotwired/turbo@7.3.0/dist/turbo.es2017-esm.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/@hotwired/turbo@7.3.0/dist/turbo.es2017-umd.js"></script> -->
+  <script src="/admin-template/vendor/jquery/jquery.min.js"></script>
+</head>
+
+<body id="page-top">
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <%- include('partial-admin/sidebar.ejs') %>
+      <!-- Sidebar -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <div data-turbo-preview id="content">
+          <!-- TopBar -->
+          <%- include("partial-admin/nav.ejs")%>
+            <!-- Topbar -->
+            <% if(typeof messages !=="undefined" ){ if (messages.success) { %>
+              <div class="success">
+                <%= messages.success %>
+              </div>
+              <% } %>
+                <% if (messages.error) { %>
+                  <div class="error">
+                    <%= messages.error %>
+                  </div>
+                  <% }} %>
+
+                    <!-- Container Fluid-->
+                    <%-body%>
+                      <!---Container Fluid-->
+        </div>
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>copyright &copy;
+                <script>
+                  document.write(new Date().getFullYear());
+                </script> - developed by
+                <b><a href="https://indrijunanda.gitlab.io/" target="_blank">indrijunanda</a></b>
+              </span>
+            </div>
+          </div>
+        </footer>
+        <!-- Footer -->
+      </div>
+  </div>
+
+  <!-- Scroll to top -->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+
+  <script src="/admin-template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/admin-template/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="/admin-template/js/ruang-admin.min.js"></script>
+
+
+
+  <% if( typeof data_table!="undefined" ) {%>
+    <link href="/admin-template/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!-- Page level plugins -->
+    <script src="/admin-template/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/admin-template/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('#table').DataTable();
+        $(".dc").percircle({
+          progressBarColor: "#CC3366",
+
+        });
+      });
+    </script>
+    <%} %>
+
+
+</body>
+
+</html>

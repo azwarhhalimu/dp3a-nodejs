@@ -1,0 +1,59 @@
+<div id="content">
+
+
+    <div class="container-fluid" id="container-wrapper">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Tags Berita</h1>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="./">Home</a></li>
+                <li class="breadcrumb-item">Tag Berita</li>
+                <li class="breadcrumb-item active" aria-current="page">Blank Page</li>
+            </ol>
+        </div>
+        <div>
+            <div class="row justify-content-center">
+                <div class="col-xl-10 col-lg-12 col-md-12">
+                    <a href="/admin/tambah-tags-berita.html" class="btn btn-primary mb-1">Tambah Tag Berita</a>
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <table id="dataTableHover" class="table">
+                                <thead>
+                                    <tr style="background: #6777EF; color:#fff;">
+                                        <th>No</th>
+                                        <th>Nama Tags Berita</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% let i=0; for(data of data){%>
+                                        <tr>
+                                            <td>
+                                                <%=i+1%>
+                                            </td>
+                                            <td>
+                                                <%=data.tags_berita%>
+                                            </td>
+                                            <td style="text-align: right;">
+                                                <a onclick="return confirm('Apakah anda ingin hapus data ini?')"
+                                                    href="/admin/delete-tags-berita.html?id_tags_berita=<%=data.id_tags_berita%>"
+                                                    class="btn btn-danger">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                                <a href="/admin/tambah-tags-berita.html?id_tags_berita=<%=data.id_tags_berita%>&target=edit"
+                                                    class="btn btn-success">
+                                                    Edit Data
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <% i++}%>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

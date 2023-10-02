@@ -1,0 +1,52 @@
+<div id="content">
+  <div class="container-fluid" id="container-wrapper">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <a class="btn btn-primary" href="/admin/tambah-tahun.html">Tambah Tahun</a>
+      <h1 class="h3 mb-0 text-gray-800">Tahun</h1>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="./">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Tahun</li>
+      </ol>
+    </div>
+
+
+    <div class="row">
+
+      <div style="margin: auto;" class="col-lg-6">
+        <!-- Form Basic -->
+        <div class="card mb-4">
+          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">Tahun</h6>
+          </div>
+          <div class="card-body">
+            <table class="table">
+              <tbody>
+                <tr style="font-weight: bold;">
+                  <td>No</td>
+                  <td>Tahun</td>
+                  <td></td>
+                </tr>
+                <% 
+                let i=0;
+                for(tahun of tahun){%>
+                <tr>
+                  <td><%=(i+1)%></td>
+                  <td><%=tahun.tahun%></td>
+                  <td style="text-align: right;">
+                    <a href="/admin/edit_tahun?id=<%=tahun.id_tahun%>">[Edit]</a>
+                    <a onclick="return confirm('Apakah anda ingin hapus data ini?')" href="/admin/hapus-tahun?id=<%=tahun.id_tahun%>">[Hapus]</a>
+                  </td>
+                </tr>
+                <% i++;}%>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+</div>

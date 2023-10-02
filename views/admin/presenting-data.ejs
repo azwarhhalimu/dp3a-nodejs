@@ -1,0 +1,51 @@
+<div id="content">
+
+  <div class="container-fluid" id="container-wrapper">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-0 text-gray-800">Tambah Data Terpilah</h1>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="./">Home</a></li>
+        <li class="breadcrumb-item"><a href="./">Kategori Data Terpilah</a></li>
+
+        <li class="breadcrumb-item active" aria-current="page">Data Terpilah</li>
+      </ol>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-lg-8" style="margin: auto;">
+        <div class="card mb-4">
+          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+
+            <h6 class="m-0 font-weight-bold text-primary">Data Mitra Instansi</h6>
+          </div>
+          <div class="card-body">
+            <table class="table" id="table">
+              <thead>
+                <tr>
+                  <td>No</td>
+                  <td>Nama Instansi</td>
+                  <td>Opsi</td>
+                </tr>
+              </thead>
+              <tbody>
+                <% 
+                var i=1;
+                for(data of data){%>
+                <tr>
+                  <td><%=i%></td>
+                  <td><%=data.instansi%> <span style="font-weight: bold; color:blueviolet;">(<%=data.jumlah%>) </span></td>
+                  <td width="25%" style="text-align: right;">
+                    <a class="btn btn-primary" href="/admin/lihat-data-terpilah?id_instansi=<%=data.id_instansi%>">Lihat Data <i class="fa fa-chevron-right"></i></a>
+                  </td>
+                </tr>
+                <%i++;}%>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

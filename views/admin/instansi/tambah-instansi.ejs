@@ -1,0 +1,130 @@
+<% 
+const id_instansi=data.id_instansi;
+const nama_instansi=data.nama_instansi;
+const alamat=data.alamat;
+const username=data.username;
+const password=data.password;
+%>
+
+<div class="container-fluid" id="container-wrapper">
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">
+      <a class="btn btn-danger" href="/admin/instansi.html">
+        <i class="fa fa-chevron-left"></i>
+        Kembali
+      </a>
+      <br />
+      Insatansi - Tambah Data Instnasi
+    </h1>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+      <li class="breadcrumb-item"><a href="/admin/instansi.html">Instansi</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Tambah Data Instansi</li>
+    </ol>
+  </div>
+
+  <div class="row">
+    <div style="margin:auto;" class="col-lg-6">
+      <!-- Form Basic -->
+      <div class="card mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">Tambah Data Instansi</h6>
+        </div>
+        <div class="card-body">
+          <form action="" enctype="multipart/form-data" method="POST">
+            <%
+            if(id_instansi !== undefined ){
+             
+              %>
+            <input type="hidden" readonly="true" name="id_instansi" value="<%=id_instansi%>" />
+            <%}%>
+            <div id="v-img">
+              <img src="" id="hasil-crop" style="width:500px;" />
+            </div>
+            <div class="form-group">
+              <label for="judul">Masukkan Gambar Berita</label>
+              <div class="custom-file">
+                <input type="file" name="foto" <%=id_instansi==undefined?"required":''%> class="custom-file-input" id="file"> <label class="custom-file-label" for="customFile">Pilih File</label>
+        </div>
+        <div style="display: none;">
+          <input type="text" name="imgX1" id="imgX1" />
+          <input type="text" name="imgY1" id="imgY1" />
+          <input type="text" name="imgWidth" id="imgWidth" />
+          <input type="text" name="imgHeight" id="imgHeight" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="bbbb   ">Nama Instansi</label>
+        <input value="<%= nama_instansi%>" type="text" name="nama_instansi" required="" class="form-control" placeholder="Contoh Dinas pendidikan...">
+
+      </div>
+
+      <div class="form-group">
+        <label for="bbbb   ">Alamat Instansi</label>
+        <textarea required="" name="alamat_instansi" class="form-control" placeholder="Contoh Jl. Kapitalao..."><%=alamat%></textarea>
+
+      </div>
+      <div class="form-group">
+        <label for="bbbb   ">Username</label>
+        <input type="text" value="<%=username%>" required="" name="username" class="form-control" placeholder="Contoh : dispen...">
+
+      </div>
+      <div class="form-group">
+        <label for="bbbb   ">Password</label>
+        <input type="password" value="<%=password%>" name="password" required="" class="form-control" placeholder="Masukkan password...">
+
+      </div>
+
+
+
+      <button type="submit" name="simpan" class="btn btn-primary">Simpan Data</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<link rel="stylesheet" href="/jcrop/css/jquery.Jcrop.min.css" type="text/css" />
+<script src="/jcrop/js/jquery.Jcrop.min.js"></script>
+
+<script>
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        $('#hasil-crop').attr('src', e.target.result);
+        var size;
+        $('#hasil-crop').Jcrop({
+          aspectRatio: 1 / 1,
+          setSelect: [50, 0, 300, 300],
+          allowResize: false,
+          onChange: SetCoordinates,
+          onSelect: SetCoordinates
+        });
+      }
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  function SetCoordinates(c) {
+    var ratioW = $('#hasil-crop')[0].naturalWidth / $('#hasil-crop').width();
+    var ratioH = $('#hasil-crop')[0].naturalHeight / $('#hasil-crop').height();
+    var currentRatio = Math.min(ratioW, ratioH);
+
+    $('#imgX1').val(Math.round(c.x * currentRatio));
+    $('#imgY1').val(Math.round(c.y * currentRatio));
+    $('#imgWidth').val(Math.round(c.w * currentRatio));
+    $('#imgHeight').val(Math.round(c.h * currentRatio));
+  }
+  $(function() {
+
+    $("#file").change(function() {
+      $('#v-img').html('   <img src="" id="hasil-crop" style="width:500px;"/>')
+      readURL(this);
+    });
+
+  })
+</script>

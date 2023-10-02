@@ -1,0 +1,133 @@
+<div id="content">
+    <div class="container-fluid" id="container-wrapper">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Tambah Berita</h1>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="./">Home</a></li>
+                <li class="breadcrumb-item"><a href="/index.php/admin/berita"> Berita</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Tambah Berita</li>
+            </ol>
+        </div>
+        <div>
+            <a href="/admin/berita.html" class="btn btn-danger mb-1">Kembali</a>
+            <div class="card mb-2 col-lg-8" style="margin: auto;">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                </div>
+                <div class="card-body">
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        <div>
+                            <label for="judul">PIlih Tags Berita</label>
+                            <select value="<%=data.id_tags_berita%>" required class="form-control" name="tags_berita">
+                                <option value="">Pilih Tags Berita</option>
+                                <%for(tags_berita of tags_berita){%>
+                                    <option <%=(typeof data.tags_berita=='undefined'
+                                        )?"":(data.tags_berita==tags_berita.id_tags_berita) &&" selected "%> value='<%=tags_berita.id_tags_berita%>'>
+                                        <%=tags_berita.tags_berita%>
+                                    </option>
+                                    <%}%>
+                            </select>
+                        </div>
+                        <div class=" form-group">
+                                        <label for="judul">Judul Berita</label>
+                                        <input type="text" value="<%=(typeof data.judul=='undefined')?"":data.judul%>"
+                                            name="judul" required class="form-control" id="exampleInputEmail1"
+                                            autocomplete="off" aria-describedby="judul" placeholder="Judul berita">
+                                        <small id="judul" class="form-text text-muted">Masukkan judul berita</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="isi">Isi Berita</label>
+                            <textarea name="isi" class="form-control" id="summernote"
+                                placeholder="Isi Berita"><%=(typeof data.isi=='undefined' )?"":data.isi%></textarea>
+                        </div>
+
+                        <div id="v-img">
+                            <img src="<%=isImage?'/images/berita?size=400&source='+data.id_berita:''%>" id="hasil-crop"
+                                style="width:500px;" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="judul">Masukkan Gambar Berita</label>
+                            <div class="custom-file">
+                                <input accept="image/*" type="file" name="foto" <%=typeof data.id_berita=='undefined'
+                                    ?"required":""%> class="custom-file-input"
+                                id="file">
+                                <label class="custom-file-label" for="customFile">Pilih File</label>
+                            </div>
+                            <div style="display: none;">
+                                <input type="text" name="imgX1" id="imgX1" />
+                                <input type="text" name="imgY1" id="imgY1" />
+                                <input type="text" name="imgWidth" id="imgWidth" />
+                                <input type="text" name="imgHeight" id="imgHeight" />
+                            </div>
+                        </div>
+
+                        <button type="submit" name="simpan_berita" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+    <link rel="stylesheet" href="/jcrop/css/jquery.Jcrop.min.css" type="text/css" />
+    <script src="/jcrop/js/jquery.Jcrop.min.js"></script>
+
+    <script>
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#hasil-crop').attr('src', e.target.result);
+                    var size;
+                    $('#hasil-crop').Jcrop({
+                        aspectRatio: 16 / 10,
+                        setSelect: [50, 0, 300, 300],
+                        allowResize: false,
+                        onChange: SetCoordinates,
+                        onSelect: SetCoordinates
+                    });
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function SetCoordinates(c) {
+            var ratioW = $('#hasil-crop')[0].naturalWidth / $('#hasil-crop').width();
+            var ratioH = $('#hasil-crop')[0].naturalHeight / $('#hasil-crop').height();
+            var currentRatio = Math.min(ratioW, ratioH);
+
+            $('#imgX1').val(Math.round(c.x * currentRatio));
+            $('#imgY1').val(Math.round(c.y * currentRatio));
+            $('#imgWidth').val(Math.round(c.w * currentRatio));
+            $('#imgHeight').val(Math.round(c.h * currentRatio));
+        }
+
+
+        $(function () {
+            $('#summernote').summernote({
+                tabsize: 3,
+                toolbar: [
+                    // [groupName, [list of button]]
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                ],
+                placeholder: 'Ketikkan disini',
+                height: '200'
+            });
+
+            $("#file").change(function () {
+                $('#v-img').html('   <img src="" id="hasil-crop" style="width:500px;"/>')
+                readURL(this);
+            });
+
+        })
+    </script>
+
+</div>

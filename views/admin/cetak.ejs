@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <title>Cetak</title>
+    <style>
+        html body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .c {
+            color: blue;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Takan Control P Untuk melakukan cetak data ke pdf atau ke printer</p>
+    <hr />
+    <button onclick="return window.print()">Cetak</button>
+    <button>Export Ke Exel</button>
+    <table width="100%" border="1px">
+
+        <tr>
+            <td>No</td>
+            <td>Nama Instansi</td>
+            <td>Username & Password</td>
+        </tr>
+        <% let i=1; for(data of data){%>
+            <tr>
+                <td>
+                    <%=i%>
+                </td>
+                <td>
+                    <%=data.nama_instansi%>
+                </td>
+                <td>
+                    username : <span class="c">
+                        <%=data.username%>
+                    </span> password :
+                </td>
+            </tr>
+
+            <%i++}%>
+    </table>
+</body>
+
+</html>

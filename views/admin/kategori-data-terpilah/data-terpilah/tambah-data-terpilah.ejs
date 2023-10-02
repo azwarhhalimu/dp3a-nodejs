@@ -1,0 +1,75 @@
+<% if( typeof data_edit.id_kategori_data_terpilah=="undefined" ) { data_edit.id_kategori_data_terpilah="" }%>
+
+  <div id="content">
+
+    <div class="container-fluid" id="container-wrapper">
+      <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <a href="<%='/admin'+url%>" class=" btn btn-danger"><i class="fa fa-chevron-left"></i> Kembali</a>
+        <h1 class="h3 mb-0 text-gray-800">Tambah Data Terpilah</h1>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="./">Home</a></li>
+
+          <li class="breadcrumb-item active" aria-current="page">Tambah Data Terpilah</li>
+        </ol>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-5" style="margin:auto;">
+          <div class="card mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+
+              <h6 class="m-0 font-weight-bold text-primary">Tambah Data terpilah</h6>
+            </div>
+            <div class="card-body">
+              <form action="" method="POST">
+                <% if(typeof from_presenting.id_instansi!=="undefined" ){%>
+
+                  <select class="form-control" name="kategori_data_terpilah"">
+                <option value="">Pilih Kategori Data Terpilah</option>
+               <% for(kategori_data_terpilah of from_presenting.kategori_data_terpilah){%>
+                  <option 
+                 <%=(data_edit.id_kategori_data_terpilah==kategori_data_terpilah.id_kategori_data_terpilah)?
+                 " selected":""%>
+                    value='<%=kategori_data_terpilah.id_kategori_data_terpilah%>'>
+                      <%=kategori_data_terpilah.kategori_data_terpilah%>
+                        </option>
+                        <%}%>
+
+                  </select>
+                  <%}%>
+                    <div class=" form-group">
+                      <label for="bbbb">Data Terpilah</label>
+                      <textarea name="data_terpilah" required="" class="form-control"
+                        placeholder="Contoh : JUMLAH DERAJAT KESEHATAN BERDASARKAN JENIS KELAMIN DINAS KESEHATAN KOTA MAKASSAR"><%= typeof data_edit.data_terpilah !="undefined" && data_edit.data_terpilah%></textarea>
+
+                    </div>
+                    <div class="form-group">
+                      <label for="bbbb   ">Label Tabel</label>
+                      <textarea name="label_tabel" required="" class="form-control"
+                        placeholder="Contoh : Data Kecamatan"><%= typeof data_edit.label_tabel !="undefined" && data_edit.label_tabel%></textarea>
+
+                    </div>
+                    <div class="form-group">
+                      <label for="bbbb   ">Sumber Data/Instansi</label>
+                      <select name="sumber_data" class="form-control">
+                        <option value="">Pilih </option>
+                        <% for(instansi of instansi){%>
+                          <option <%=(instansi.id_instansi==from_presenting.id_instansi)?"selected":""%>
+                            value='<%=instansi.id_instansi%>'><%=instansi.nama_instansi%>
+                          </option>
+                          <% } %>
+                      </select>
+                      <span style="font-size: 14px; opacity: 0.7;">Kosongkan bila sumber data belum di
+                        identifikasi</span>
+                    </div>
+                    <button type="submit" name="simpan_data_terpilah" class="btn btn-primary">Simpan Data</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>

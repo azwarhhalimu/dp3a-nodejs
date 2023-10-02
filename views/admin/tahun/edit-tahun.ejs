@@ -1,0 +1,39 @@
+<div id="content">
+  <div class="container-fluid" id="container-wrapper">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <a class="btn btn-danger" href="/admin/komponen-tahun.html">Kembali</a>
+      <h1 class="h3 mb-0 text-gray-800">Tahun</h1>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="./">Home</a></li>
+        <li class="breadcrumb-item"><a href="/index.php/admin/tahun">Tahun</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Edit Tahun</li>
+      </ol>
+    </div>
+
+    <div class="row">
+      <div style="margin: auto;" class="col-lg-6">
+        <!-- Form Basic -->
+        <div class="card mb-4">
+          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">Edit Data Tahun</h6>
+          </div>
+          <div class="card-body">
+            <form action="" method="POST">
+              <div class="form-group">
+                <label for="bbbb   ">Tahun</label>
+                <input type="number" name="tahun" value="<%=data.tahun%>" required="" maxlength="4" class="form-control" placeholder="Contoh 2020">
+
+              </div>
+
+              <button type="submit" name="update" class="btn btn-primary">Update Data</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+</div>

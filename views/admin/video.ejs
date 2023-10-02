@@ -1,0 +1,81 @@
+<div id="content">
+    <link href="/r-admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="/r-admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/r-admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable(); // ID From dataTable with Hover
+        });
+    </script>
+    <div class="container-fluid" id="container-wrapper">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Video</h1>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="./">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Video</a></li>
+            </ol>
+        </div>
+        <div>
+            <div style="background:#FFFFFF; padding: 10px; border-radius: 4px;">
+                <form action="" method="POST">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Judul</label>
+                        <input autocomplete="off" type="text" required name="judul" class="form-control"
+                            id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan judul Video">
+                        <small id="emailHelp" class="form-text text-muted">Contoh : Peristiwa, berita utama dll.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Url (Youtube)</label>
+                        <input autocomplete="off" type="text" required name="url" class="form-control"
+                            id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Url Youtube">
+                        <small id="emailHelp" class="form-text text-muted">Kopikan url youtube</small>
+                    </div>
+
+
+                    <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
+                </form>
+            </div>
+            <div class="card mb-2 col-lg-12" style="margin: auto;">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                </div>
+                <div class="card-body">
+                    <table id="table" class="table">
+                        <thead>
+                            <tr style="font-weight: bold;">
+                                <td>No</td>
+                                <td>Image</td>
+                                <td>Url</td>
+                                <td>Judul</td>
+                                <td>Aksi</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% let i=0; for(data of data){%>
+                                <tr>
+                                    <td>
+                                        <%=i+1%>
+                                    </td>
+                                    <td>
+                                        <img style="width: 100px;"
+                                            src="http://img.youtube.com/vi/<%=fungsi(data.url_youtube)%>/sddefault.jpg" />
+                                    </td>
+                                    <td>
+                                        <%=data.url_youtube%>
+                                    </td>
+                                    <td>
+                                        <%=data.judul%>
+                                    </td>
+                                    <td>
+                                        <a onclick="return confirm('Apakah anda ingin hapus data ini?')"
+                                            href="/index.php/admin/hapus_video?id=36734"
+                                            class="btn btn-outline-danger mb-1">Hapus</a>
+                                    </td>
+                                </tr>
+                                <%i++;}%>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

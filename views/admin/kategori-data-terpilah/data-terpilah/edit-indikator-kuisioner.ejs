@@ -1,0 +1,29 @@
+<div class="container-fluid" id="container-wrapper">
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <a href="/admin/data-indikator.html?id_kategori_data_terpilah=<%=parem.id_kategori_data_terpilah%>&id_data_terpilah=<%=parem.id_data_terpilah%>" class="btn btn-danger"><i class="fa fa-chevron-left"></i> Kembali</a>
+    <h1 class="h3 mb-0 text-gray-800">Edit Data Terpilah</h1>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="./">Home</a></li>
+
+      <li class="breadcrumb-item active" aria-current="page">Edit Indikator Kuisioner</li>
+    </ol>
+  </div>
+  <div class="row">
+    <div class="col-lg-5" style="margin:auto;">
+      <div class="card mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">Edit Data terpilah</h6>
+        </div>
+        <div class="card-body">
+          <form action="" method="POST">
+            <div class="form-group">
+              <label for="bbbb">Indikator Kuisioner</label>
+              <textarea name="indikator_kuisioner" required="" class="form-control" placeholder="Contoh : "><%=data.indikator_kuisioner%></textarea>
+            </div>
+            <button type="submit" name="update_indikator_kuisioner" class="btn btn-primary">Update Data</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

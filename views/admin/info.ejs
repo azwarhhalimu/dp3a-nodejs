@@ -1,0 +1,63 @@
+<div id="content">
+    <link href="/r-admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="/r-admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/r-admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+        });
+    </script>
+
+    <div class="container-fluid" id="container-wrapper">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Informasi</h1>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="./">Informasi</a></li>
+            </ol>
+        </div>
+        <div>
+            <div class="row justify-content-center">
+                <div class="col-xl-10 col-lg-12 col-md-12">
+                    <a href="/admin/tambah-info.html" class="btn btn-primary mb-1">Tambah</a>
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <table id="table" class="table">
+                                <thead style="font-weight: bold;">
+                                    <tr>
+                                        <td>No</td>
+                                        <td>Informasi</td>
+                                        <td>Tanggal</td>
+                                        <td>Tindakkan</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% let i=0; for(data of data){%>
+                                        <tr>
+                                            <td>
+                                                <%=i+1%>.
+                                            </td>
+                                            <td>
+                                                <%=data.info%>
+                                            </td>
+                                            <td>
+                                                <%=data.tanggal%>
+                                            </td>
+                                            <td style="text-align: right;">
+                                                <a href="/admin/hapus-info.html?id_info=<%=data.id_info%>"
+                                                    onclick="return confirm('Apakah anda ingin hapus data ini?')"
+                                                    class="btn btn-danger mb-1">Hapus</a>
+                                                <a href="/admin/tambah-info.html?id_info=<%=data.id_info%>&target=edit"
+                                                    class="btn btn-primary mb-1">Edit</a>
+                                            </td>
+                                        </tr>
+                                        <% i++;}%>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

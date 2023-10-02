@@ -1,0 +1,79 @@
+<div class="container-fluid" id="container-wrapper">
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Instansi</h1>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="./">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Data Instansi</li>
+    </ol>
+  </div>
+
+  <% if(flash==true){ %>
+    <div class="alert alert-success">
+      Data baerhasil di hapus
+    </div>
+    <% }%>
+      <div class="card">
+        <div class="card-header">
+          <div style="font-weight: bold;">Data Instansi
+            <a href="/admin/instansi/tambah-instansi.html" class="btn btn-primary float-right">Tambah Data</a>
+          </div>
+          <div class="card-body">
+            <table id="table" class="table table-bordered">
+              <thead style="background: rgb(48, 151, 248);color: white;font-weight: bold;">
+                <tr>
+                  <td>Opsi</td>
+                  <td>No</td>
+                  <td>Logo</td>
+                  <td>Nama Instansi</td>
+                  <td>Alamat</td>
+                  <td>Username</td>
+                  <td>Password</td>
+                </tr>
+              </thead>
+              <tbody>
+                <% i=0; for(data of data) { %>
+                  <tr>
+                    <td width="120px">
+                      <a href="/admin/instansi.html/delete/<%=data.id_instansi%>"
+                        onclick="return confirm('Apakah anda ingin hapus data ini?')" class="btn btn-danger">
+                        <i class="fas fa-trash"></i>
+                      </a>
+                      <a href="/admin/instansi/tambah-instansi.html?target=edit&id=<%=data.id_instansi%>"
+                        class="btn btn-warning">
+                        Ubah
+                      </a>
+                    </td>
+                    <td>
+                      <%=i+1%>
+                    </td>
+                    <td>
+                      <img style="border:2px solid #dfdfdf"
+                        src="/images/instansi?source=<%=data.id_instansi%>&size=50" />
+                    </td>
+                    <td>
+                      <%=data.nama_instansi%>
+                    </td>
+                    <td>
+                      <%=data.alamat%>
+                    </td>
+                    <td>
+                      <%=data.username%>
+                    </td>
+                    <td>
+                      <%=(data.password)%>
+                    </td>
+                  </tr>
+                  <% i++; }%>
+
+              </tbody>
+
+            </table>
+
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Logout -->
+
+</div>

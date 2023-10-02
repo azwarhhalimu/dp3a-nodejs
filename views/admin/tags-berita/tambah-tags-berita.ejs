@@ -1,0 +1,35 @@
+<div id="content">
+    <div class="container-fluid" id="container-wrapper">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Tambah Tags Berita</h1>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="./">Home</a></li>
+                <li class="breadcrumb-item"><a href="/admin/tags-berita.html">Tags Berita</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Tambah Tags Berita</li>
+            </ol>
+        </div>
+        <div>
+            <a href="/admin/tags-berita.html" class="btn btn-primary mb-1">Kembali</a>
+            <div class="card mb-2 col-lg-5" style="margin: auto;">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                </div>
+                <div class="card-body">
+                    <form action="" method="POST">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nama Tags Berita</label>
+                            <input value="<%=( typeof data.tags_berita===" undefined")?"":data.tags_berita%>"
+                            autocomplete="off"
+                            type="text" required
+                            name="tags_berita" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" placeholder="Masukkan nama tags berita">
+                            <small id="emailHelp" class="form-text text-muted">Contoh : Peristiwa, berita utama
+                                dll.</small>
+                        </div>
+
+                        <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<div id="content">
+
+
+    <div class="container-fluid" id="container-wrapper">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Berita</h1>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="./">Home</a></li>
+                <li class="breadcrumb-item"><a href="/index.php/admin/tags_berita">Berita</a></li>
+            </ol>
+        </div>
+        <div>
+            <a href="/admin/tambah-berita.html" class="btn btn-primary mb-1">Tambah Berita</a>
+            <div class="card mb-2 col-lg-12" style="margin: auto;">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                </div>
+                <div class="card-body">
+                    <table id="table" class="table">
+                        <thead>
+                            <tr style="font-weight: bold;">
+                                <td>No</td>
+                                <td>Thumb</td>
+                                <td>Judul</td>
+                                <td>Tags</td>
+                                <td>Aksi</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% let=i=0; for(data of data){%>
+                                <tr>
+                                    <td>
+                                        <%=i+1%>
+                                    </td>
+                                    <td>
+                                        <img style="border-radius:3px;"
+                                            src="/images/berita?size=100&source=<%=data.id_berita%>" />
+                                    </td>
+                                    <td>
+                                        <%=data.judul%>
+                                    </td>
+                                    <td>
+                                        <%=data.tags_berita%>
+                                    </td>
+                                    <td>
+                                        <a href="/admin/tambah-berita.html?id_berita=<%=data.id_berita%>&target=edit"
+                                            class="btn btn-outline-primary mb-1">Edit</a>
+                                        <a onclick="return confirm('Apakah anda ingin hapus data ini?')"
+                                            href="/admin/delete-berita.html?id_berita=<%=data.id_berita%>"
+                                            class="btn btn-outline-danger mb-1">Hapus</a>
+                                    </td>
+                                </tr>
+                                <%i++;}%>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

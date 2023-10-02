@@ -1,0 +1,48 @@
+<div class="container-fluid" id="container-wrapper">
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <a href="/admin/kategori-data-terpilah/tambah-kategori-data-terpilah.html" class="btn btn-primary">Tambah Data</a>
+    <h1 class="h3 mb-0 text-gray-800">Data Terpilah</h1>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="./">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Kategori Data Terpilah</li>
+    </ol>
+  </div>
+
+
+  <div class="row">
+    <div class="col-lg-10" style="margin:auto;">
+      <!-- Form Basic -->
+      <div class="card mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">kategori Data Terpilah</h6>
+        </div>
+        <div class="card-body">
+          <table id="table" class="table">
+            <thead>
+              <tr style="font-weight: bold; color: rgb(16, 110, 242);">
+                <td>No</td>
+                <td>Kategori Data Terpilah</td>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody>
+              <% 
+              var i=0;
+              for(data of data){%>
+              <tr>
+                <td><%=i+1%></td>
+                <td><%=data['kategori_data_terpilah']%></td>
+                <td style="text-align: right;">
+                  <a href="/admin/edit_kategori_data_terpilah?id=<%=data.id_kategori_data_terpilah%>" class="btn btn-warning">Edit</a>
+                  <a onclick="return confirm('Apakah anda ingin hapus data ini?')" href="/admin/hapus_kategori_data_terpilah?id=<%=data.id_kategori_data_terpilah%>" class="btn btn-danger">Hapus</a>
+                  <a href="/admin/data_terpilah?id_kategori_data_terpilah=<%=data.id_kategori_data_terpilah%>" class="btn btn-primary">Data Terpilah(<%= data.jumlah_data%>) <i class="fa fa-chevron-right"></i></a>
+                </td>
+              </tr>
+              <% i++ }%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

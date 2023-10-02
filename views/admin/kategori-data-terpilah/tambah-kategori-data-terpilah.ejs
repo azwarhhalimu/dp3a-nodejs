@@ -1,0 +1,43 @@
+<%
+
+if(typeof data!== "undefined"){
+    console.log(data);
+}
+%>
+<div class="container-fluid" id="container-wrapper">
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <a class="btn btn-danger" href="/admin/kategori-data-terpilah.html">Kembali</a>
+    <h1 class="h3 mb-0 text-gray-800"><%=(typeof data!=="undefined")?"Edit":"Tambah"%> Kategori Data Terpilah</h1>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="./">Home</a></li>
+      <li class="breadcrumb-item"><a href="<?= createUrl('admin/kategori_data_terpilah') ?>">Kategori Data Terpilah</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><%=(typeof data!=="undefined")?"Edit":"Tambah"%> Kategori Data Terpilah</li>
+    </ol>
+  </div>
+
+  <div class="row">
+    <div style="margin: auto;" class="col-lg-6">
+      <!-- Form Basic -->
+      <div class="card mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary"><%=(typeof data!=="undefined")?"Edit":"Tambah"%> Kategori Data Terpilah</h6>
+        </div>
+        <div class="card-body">
+          <form action="" method="POST">
+            <div class="form-group">
+              <label for="bbbb   ">Nama Kategori Data Terpilah</label>
+              <input type="text" value="<%= typeof data!=="undefined"?data.kategori_data_terpilah:""%>" name="kategori_data_terpilah" required="" class="form-control" placeholder="Contoh Bidang Kesehatan">
+
+            </div>
+
+            <button type="submit" name="simpan" class="btn btn-primary">Simpan Data</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>

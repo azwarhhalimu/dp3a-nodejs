@@ -1,0 +1,99 @@
+<div id="content">
+
+  <div class="container-fluid" id="container-wrapper">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <a href="/admin/presenting-data.html" class="btn btn-danger"><i class="fa fa-chevron-left"></i> Kembali</a>
+      <h1 class="h3 mb-0 text-gray-800">Data Terpilah - <%=data.instansi%>
+      </h1>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="./">Home</a></li>
+        <li class="breadcrumb-item"><a href="./">Data Instansi</a></li>
+
+        <li class="breadcrumb-item active" aria-current="page">Data Terpilah</li>
+      </ol>
+    </div>
+    <script src="/percircle/percircle.js"></script>
+    <link rel="stylesheet" href="/percircle/percircle.css">
+
+    <script>
+      $("#dc").percircle({
+        progressBarColor: "#CC3366",
+
+      });
+    </script>
+
+
+    <div class="row">
+      <div class="col-lg-12" style="margin: auto;">
+        <div class="card mb-4">
+          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <a href="/admin/tambah-data-terpilah.html?id_instansi=<%=id_instansi%>" class="btn btn-facebook">Tambah
+              Indikator Terpilah</a>
+
+            <h6 class="m-0 font-weight-bold text-primary">Data Mitra Instansi</h6>
+          </div>
+          <div class="card-body">
+            <table width="100%" class="table" id="table">
+              <thead>
+                <tr style="font-weight: bold;">
+                  <td>No</td>
+                  <td>Data Terpilah</td>
+                  <td>Presetase Penginputan Data</td>
+                  <td>Aksi</td>
+                </tr>
+              </thead>
+              <tbody>
+                <% i=0; for(data of data.data){%>
+                  <tr>
+                    <td>
+                      <%=(i+1)%>
+                    </td>
+                    <td width=" 700px" style="text-transform:uppercase;">
+                      <%=data.data_terpilah%>
+                        <div>
+                          <a
+                            href="/admin/tambah-data-terpilah.html?id_instansi=<%=id_instansi%>&id_data_terpilah=<%=data.id_data_terpilah%>&target=edit">[Edit]</a>
+                          &nbsp;
+                          <a onclick="return confirm('Apakah anda ingin hapus data ini?')"
+                            href="/admin/hapus-data-terpilah.html?id_data_terpilah=<%=data.id_data_terpilah%>">[Hapus]</a>
+                        </div>
+                    </td>
+                    <td>
+                      <table width="100px" style="text-align: center; font-size: 12px;">
+                        <tr style="font-weight: bold;">
+                          <% for(tahun of data.list_tahun){%>
+                            <td>
+                              <%=tahun.tahun%>
+                            </td>
+                            <%}%>
+
+                        </tr>
+                        <tr>
+                          <% for(tahun of data.list_tahun){%>
+                            <td>
+                              <div data-percent="86" style="font-size:40px;" class="dc small k">
+                              </div>
+                              <%=tahun.persentase%>%
+
+                                <div>
+                                  <%=tahun.jumlah_data_terisi%>/<%=data.jumlah_data%>
+                                </div>
+                            </td>
+                            <%}%>
+                        </tr>
+                      </table>
+                    </td>
+                    <td>
+                      <a href="/admin/show-indikator-kuisioner.html?id_data_terpilah=<%=data.id_data_terpilah%>"
+                        class="btn btn-danger">Lihat</a>
+                    </td>
+                  </tr>
+                  <% i++;}%>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
