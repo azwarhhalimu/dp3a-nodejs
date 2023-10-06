@@ -18,4 +18,12 @@ module.exports = class ProfilMdl {
         }
         return "update_gagal";
     }
+
+    async getProfil(id_profil) {
+        const [query] = await pool.query("SELECT * FROM menu_profil WHERE id_menu_profil=?", [id_profil]);
+
+        if (query.length > 0)
+            return query[0];
+        return {};
+    }
 }

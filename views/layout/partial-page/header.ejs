@@ -27,7 +27,7 @@
                         <!-- Logo -->
                         <div class="col-xl-3 col-lg-3 col-md-3">
                             <div class="logo">
-                                <a href="/index.php/site">
+                                <a href="/">
                                     <img style="height: 70px"
                                         src="https://dp3a.baubaukota.go.id/index.php/images/header?w=700&h=500&f=logo" />
                                 </a>
@@ -48,7 +48,7 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 header-flex">
                             <!-- sticky -->
                             <div class="sticky-logo">
-                                <a href="/index.php/site">
+                                <a href="/">
                                     <img style="height: 70px"
                                         src="https://dp3a.baubaukota.go.id/index.php/images/header?w=700&h=500&f=logo" />
                                 </a>
@@ -57,35 +57,34 @@
                             <div class="main-menu d-none d-md-block">
                                 <nav>
                                     <ul style="color:#fff;" id="navigation">
-                                        <li class="active"><a style="color:#FFFFFF;" href="/index.php/site">Beranda</a>
+                                        <li class="active"><a style="color:#FFFFFF;" href="/">Beranda</a>
                                         </li>
                                         <li><a style="color:#FFFFFF;" href="#">Berita &nbsp; &nbsp;<span
                                                     class="fas fa-angle-down special-tag"></span></a>
                                             <ul class="submenu">
-                                                <li><a
-                                                        href="/index.php/tags-berita/116127/mancanegara.html">Mancanegara</a>
-                                                </li>
-                                                <li><a href="/index.php/tags-berita/176291/berita-utama.html">Berita
-                                                        Utama</a></li>
-                                                <li><a href="/index.php/tags-berita/528333/peristiwa.html">Peristiwa</a>
-                                                </li>
+                                                <%for(tags_berita of menu.tags_berita){%>
+                                                    <li><a
+                                                            href="/tags-berita/<%=tags_berita.id_tags_berita%>/<%=tags_berita.tags_berita%>.html">
+                                                            <%=tags_berita.tags_berita%>
+                                                        </a>
+                                                    </li>
+
+                                                    <%}%>
                                             </ul>
                                         </li>
                                         <li><a style="color: #FFFFFF;" href="#">Profil &nbsp; &nbsp;<span
                                                     class="fas fa-angle-down special-tag"></span></a>
                                             <ul style="width:400px;" class="submenu">
-                                                <li><a href="/index.php/649226/profil/sejarah.html">Sejarah</a></li>
-                                                <li><a href="/index.php/100608/profil/visi-misi.html">Visi Misi</a></li>
-                                                <li><a href="/index.php/339582/profil/tugas-pokok-dan-fungsi.html">Tugas
-                                                        Pokok dan Fungsi</a></li>
-                                                <li><a href="/index.php/403907/profil/kepala-dinas.html">Kepala
-                                                        Dinas</a></li>
-                                                <li><a href="/index.php/459008/profil/struktur-dinas.html">Struktur
-                                                        Dinas</a></li>
+                                                <%for(menu_profil of menu.menu_profil){%>
+                                                    <li><a
+                                                            href="/profil/<%=menu_profil.id_menu_profil%>/<%=menu_profil.judul%>.html">
+                                                            <%=menu_profil.judul%>
+                                                        </a></li>
+                                                    <%}%>
                                             </ul>
                                         </li>
                                         <!--<li><a href="/index.php/agenda">Agenda</a></li>-->
-                                        <li><a style="color:#FFFFFF;" href="/index.php/buku-tamu">Buku Tamu</a></li>
+                                        <li><a style="color:#FFFFFF;" href="/buku-tamu.html">Buku Tamu</a></li>
                                         <!--<li><a style="color:#fff;" href="#">Pengetahuan  &nbsp; &nbsp;<span class="fas fa-angle-down special-tag"></span></a>-->
                                         <ul class="submenu">
                                             <li><a href="/index.php/685893/pengetahuan/materi-khusus.html">Materi
@@ -96,9 +95,9 @@
                                                     Istilah Safety</a></li>
                                         </ul>
                                         </li>
-                                        <li><a style="color:#FFFFFF;" href="/index.php/site/kontak">Kontak</a></li>
-                                        <li><a style="color:#FFFFFF;" href="/index.php/login">Login</a></li>
-                                        <li><a style="color:#FFFFFF;" href="/index.php/siga.html">Data SIGA</a></li>
+                                        <li><a style="color:#FFFFFF;" href="/kontak.html">Kontak</a></li>
+                                        <li><a style="color:#FFFFFF;" href="/login.html">Login</a></li>
+                                        <li><a style="color:#FFFFFF;" href="/siga.html">Data SIGA</a></li>
                                         <li><a style="color:#FFFFFF;" href="http://siga.dp3a.baubaukota.go.id/">Admin
                                                 SIGA</a></li>
                                     </ul>

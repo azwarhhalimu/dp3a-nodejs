@@ -1,0 +1,38 @@
+<div style="height: 30px;"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- Trending Tittle -->
+            <div>
+                <h2>SIGA Kota Kota Baubau</h2>
+                <h4>SISTEM INFORMASI GENDER DAN ANAK (SIGA)</h4>
+                <div> SIGA Kota Baubau adalah sistem yang dibuat untuk memudahkan pengelolaan data terpilah yang
+                    berkaitan
+                    dengan Gender dan Anak</div>
+                <br />
+                <br />
+                <br />
+                <div style="font-weight: bold;">Kategori Data Terpilah</div>
+                <br />
+                <input type="text" placehoder="Masukkan pencarian....." class="form-control" />
+                <br />
+
+                <ul class="list-group">
+                    <%for(data of data){%>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="/<%=data.id_kategori_data_terpilah%>/data-terpilah/<%=data.kategori_data_terpilah%>.html"
+                                style="color:#000">
+                                <%=data.kategori_data_terpilah%>
+                            </a>
+                            <span class="badge badge-primary badge-pill">
+                                <%=data.jumlah_data%>
+                            </span>
+                        </li>
+                        <%}%>
+                </ul>
+            </div>
+            <br />
+            <br />
+        </div>
+    </div>
+</div>

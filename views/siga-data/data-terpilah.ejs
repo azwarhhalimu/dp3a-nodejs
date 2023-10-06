@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- Trending Tittle -->
+            <div>
+
+                <br />
+                <h3 style="font-weight: bold;">
+                    <%=root_data.kategori_data_terpilah%>
+                </h3>
+                <br />
+                <br />
+                <input type="text" class="form-control" placeholder="Masukkan pencarina" />
+                <table class="table table-bordered">
+                    <tr style="font-weight: bold;">
+                        <td>No</td>
+                        <td>Nama Tabel</td>
+                        <td>Cetak</td>
+                    </tr>
+                    <% let i=1; for(data of data){%>
+                        <tr>
+                            <td width="100px">
+                                <%=i%>
+                            </td>
+                            <td>
+                                <%=data.data_terpilah%>
+                            </td>
+                            <td>
+                                <a href="/<%=data.id_data_terpilah%>/pilih-tahun/<%=data.data_terpilah.toLowerCase().replace(' ','-')%>.html"
+                                    class="btn btn-success" style="background : #2A96FF;">Cetak</a>
+                            </td>
+                        </tr>
+                        <%i++;}%>
+                </table>
+            </div>
+            <br />
+            <br />
+        </div>
+    </div>
+</div>

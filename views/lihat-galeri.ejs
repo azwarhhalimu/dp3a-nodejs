@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="/Swiper-master/dist/css/swiper.min.css">
+
+    <!-- Demo styles -->
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #000;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .swiper-slide {
+            background-size: cover;
+            background-position: center;
+        }
+
+        .gallery-top {
+            height: 80%;
+            width: 100%;
+        }
+
+        .gallery-thumbs {
+            height: 20%;
+            box-sizing: border-box;
+            padding: 10px 0;
+        }
+
+        .gallery-thumbs .swiper-slide {
+            height: 100%;
+            opacity: 0.4;
+        }
+
+        .gallery-thumbs .swiper-slide-active {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div
+        style="background: #000; color:#FFF; margin-bottom: -40px; position: absolute; width: 100%; top: 0px;left: 0;z-index: 999999;">
+        <div style="padding:20px;font-weight: bold; ">
+            <a href="/" style=" color:#fff;"> Keluar </a> | Dinas Penanggalungan Kebakaran dan Penyelematan
+            Kota Baubau
+        </div>
+    </div>
+    <!-- Swiper -->
+    <div class="swiper-container gallery-top">
+        <div class="swiper-wrapper">
+            <%for(galeri of galeri){%>
+                <div class="swiper-slide"
+                    style="background-image:url(/images/galeri?size=1200&target=<%=galeri.id_galeri%>)">
+                    dfdf
+                </div>
+                <%}%>
+
+        </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next swiper-button-white"></div>
+        <div class="swiper-button-prev swiper-button-white"></div>
+    </div>
+    <div class="swiper-container gallery-thumbs">
+        <div class="swiper-wrapper">
+            <%for(galeri2 of galeri2){%>
+                <div class="swiper-slide"
+                    style="background-image:url(/images/galeri?size=120&target=<%=galeri2.id_galeri%>)">
+                </div>
+
+                <%}%>
+        </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="/Swiper-master/dist/js/swiper.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var galleryTop = new Swiper('.gallery-top', {
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            spaceBetween: 10,
+            loop: true,
+            initialSlide: 1,
+            loopedSlides: 5, //looped slides should be the same     
+        });
+        var galleryThumbs = new Swiper('.gallery-thumbs', {
+            spaceBetween: 10,
+            initialSlide: 1,
+            slidesPerView: 8,
+            touchRatio: 0.2,
+            loop: true,
+            loopedSlides: 5, //looped slides should be the same
+            slideToClickedSlide: true
+        });
+        galleryTop.params.control = galleryThumbs;
+        galleryThumbs.params.control = galleryTop;
+
+    </script>
+</body>
+
+</html>

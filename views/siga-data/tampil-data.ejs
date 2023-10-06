@@ -1,0 +1,144 @@
+<div style="height: 30px;"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- Trending Tittle -->
+            <script src="/assets/tableToExcel.js"></script>
+
+            <div>
+                <div id="atas" style="text-align: right">
+                    <form action="/index.php/8175924720/tampil_data" method="GET">
+
+                        <table align="right">
+                            <tr>
+                                <td>
+                                    <select name="tahun" required="">
+                                        <option value="">Pilih Tahun</option>
+                                        <option value="90006">2020</option>
+                                        <option value="77485">2021</option>
+                                        <option value="67079">2022</option>
+                                        <option selected value="52882">2023</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input
+                                        style="border:0px solid #DFDFDF; cursor: pointer;height: 40px; background: #59AEFF;color:#fff; border-radius: 5px;"
+                                        type="submit" name="btn" value="LAYAR" />
+                                </td>
+                                <td>
+
+                                    <input
+                                        style="border:0px solid #DFDFDF;cursor: pointer; height: 40px; background: #67D477;color:#fff; border-radius: 5px;"
+                                        type="button" onclick="return window.print();" name="btn" value="PRINTER" />
+                                </td>
+                                <td>
+                                    <input onclick="return to_excel()" ;
+                                        style="border:0px solid #DFDFDF; cursor: pointer;height: 40px; background: #FF8278;color:#fff; border-radius: 5px;"
+                                        type="button" name="btn" value="EXCEL" />
+                                </td>
+                            </tr>
+
+                        </table>
+
+
+
+
+                    </form>
+                </div>
+                <br /><Br />
+                <style>
+                    @media print {
+                        #header {
+                            display: none;
+                        }
+
+                        .trending-tittle,
+                        footer,
+                        #atas {
+                            display: none;
+                        }
+                    }
+                </style>
+                <div class="to-print" id="to-print">
+                    <div style="text-align: center; width:70%; margin: auto;">
+                        <div style=" font-size:22px; font-weight: bold;">
+                            <%=data_terpilah.data_terpilah%> <!-- Tahun  -->
+                        </div>
+                    </div>
+                    <table style="color:#6F6F6F;" class="table table-bordered">
+                        <thead>
+                            <tr style="text-align: center;">
+                                <th rowspan="2">No</th>
+                                <th rowspan="2">KEMENTERIAN AGAMA KOTA BAUBAU</th>
+                                <%for(tahun of tahun){%>
+                                    <th colspan="3">
+                                        <%=tahun.tahun%>
+                                    </th>
+                                    <%}%>
+                            </tr>
+
+                            <tr style="text-align: center;">
+                                <% for(tahun2 of tahun2){%>
+                                    <th>
+                                        L
+                                    </th>
+                                    <th>P</th>
+                                    <th>$</th>
+
+                                    <%}%>
+                            </tr>
+
+
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                        <tfoot>
+                            <% let i=0; for(data of data){%>
+                                <tr style="font-weight:bold;">
+                                    <td>
+                                        <%=i+1%>
+                                    </td>
+                                    <td>
+                                        <%=data.indikator_kuisioner%>
+                                    </td>
+                                    <%for(ctahun of data.tahun){%>
+                                        <td style="color:blue;">
+                                            <%=ctahun.data.laki_laki%>
+                                        </td>
+                                        <td style="color:red;">
+                                            <%=ctahun.data.perempuan%>
+                                        </td>
+                                        <td style="color:#67D477;">
+                                            <%=ctahun.data.laki_laki+ctahun.data.perempuan%>
+                                        </td>
+                                        <%}%>
+                                </tr>
+
+
+                                <%i++;}%>
+                        </tfoot>
+                    </table>
+                    <div>
+                        <i style="font-weight: bold;">Sumber Data: KEMENTERIAN AGAMA</i>
+                    </div>
+                </div>
+
+            </div>
+            <br />
+            <br />
+
+            <script>
+                function to_excel() {
+                    TableToExcel.convert(document.getElementById("to-print"), {
+                        name: "Traceability.xlsx",
+                        sheet: {
+                            name: "Sheet1"
+                        }
+                    });
+                }
+            </script>
+        </div>
+    </div>
+</div>

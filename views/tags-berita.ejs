@@ -1,0 +1,40 @@
+<div class="container">
+    <div style="height:30px"></div>
+    <div class="row">
+        <% -include('layout/partial-page/sidebar.ejs')%>
+            <div class="col-lg-8">
+                <!-- Trending Tittle -->
+
+                <div class="section-tittle mb-30">
+                    <h3>Berita Utama</h3>
+                </div>
+
+                <div class="whats-news-caption">
+                    <div class="row">
+                        <% for(data of data){%>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="single-what-news mb-100">
+                                    <a href="/lihat-berita/<%=data.id_berita%>/<%=data.judul%>.html">
+                                        <div class="what-img">
+                                            <img style="width:100%; border-radius: 10px;"
+                                                src="/images/berita?source=<%=data.id_berita%>&size=500" alt="">
+                                        </div>
+                                    </a>
+
+                                    <div class="what-cap">
+                                        <span class="color1">
+                                            <%=data.tanggal%>
+                                        </span>
+                                        <h4><a href="/lihat-berita/<%=data.id_berita%>/<%=data.judul%>.html">DP3A
+                                                <%=data.judul%>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <%}%>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

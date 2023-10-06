@@ -1,12 +1,14 @@
-</style>
 <div class="container-fluid">
     <div class="row">
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" style="border-radius:10px">
-                    <img style="width: 100%;border-radius:00px;"
-                        src="https://dp3a.baubaukota.go.id/index.php/images/slide_show?w=1300&h=1300&f=6671145910" />
-                </div>
+                <%for(slide_show of slide_show){%>
+                    <div class="swiper-slide" style="border-radius:10px">
+                        <img style="width: 100%;border-radius:00px;"
+                            src="/images/slide-show?size=1400&target=<%=slide_show.id_slide_show%>" />
+                    </div>
+
+                    <%}%>
             </div>
             <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
@@ -49,6 +51,548 @@
                 <img style="" src="/assets/img.png">
                 <br />
                 <br />
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/Swiper-master/dist/js/swiper.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        slidesPerView: 1,
+
+        autoplay: 2500,
+        paginationClickable: true,
+        spaceBetween: 30,
+        loop: true,
+
+    })
+</script>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9">
+
+
+
+            <style>
+                .nav-tabs .nav-item.show .nav-link,
+                .nav-tabs .nav-link.active {
+                    color: #FFF;
+                    background: red;
+                    border: 0px solid #FFF;
+                }
+
+                a.nav-tabs .nav-item.show .nav-link,
+                .nav-tabs .nav-link.active {
+                    color: #FFF;
+                    font-weight: bold;
+                    background: red;
+                    border: 0px solid #FFF;
+                }
+            </style>
+            <style>
+                #c1 {
+                    transition: transform 250ms;
+                }
+
+                #c1:hover {
+                    transform: translateY(-20px);
+                }
+
+                @keyframes shake {
+
+                    10%,
+                    90% {
+                        transform: translate3d(-1px, 0, 0);
+                    }
+
+                    20%,
+                    80% {
+                        transform: translate3d(2px, 0, 0);
+                    }
+
+                    30%,
+                    50%,
+                    70% {
+                        transform: translate3d(-4px, 0, 0);
+                    }
+
+                    40%,
+                    60% {
+                        transform: translate3d(4px, 0, 0);
+                    }
+                }
+            </style>
+            <div>
+                <div>
+                    <%for(banner of banner){%>
+
+                        <% if(banner.lokasi=="di-atas-artikel-terkini" ){%>
+                            <div style="margin-bottom:10px;">
+                                <img style="width:100%; border-radius: 2px;"
+                                    src="/images/banner?target=<%=banner.id_banner%>&size=400" />
+                            </div>
+                            <%}}%>
+                </div>
+                <h5>Artikel Terkini</h5>
+                <div class="row">
+                    <%for(berita of berita){ %>
+                        <div class="col-lg-4" style="margin-top:15px;">
+                            <a href="/lihat-berita/<%=berita.id_berita%>/<%=berita.judul%>.html">
+                                <div id="c1">
+                                    <img style="width:100%; border-top-left-radius: 5px;
+                                                     border-top-right-radius: 5px;
+                                                     "
+                                        src="/images/berita?size=200&source=<%=func.titleToLink(berita.id_berita)%>" />
+                                    <div
+                                        style="font-size: 13px;background:#F55C47; padding: 4px; color: #fff;font-weight: bold; padding-left: 5px;">
+                                        <%=berita.tanggal%>
+                                    </div>
+                                    <div
+                                        style="padding:10px; font-size: 12px; height: 90px;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;background: #575757; color: #FFF; font-weight: BOLD;">
+                                        <%=berita.judul%>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <%}%>
+                </div>
+
+            </div>
+
+
+            <div>
+                <style>
+                    /* Style the tab */
+                    .tab {
+
+                        font-weight: bold;
+                        overflow: hidden;
+                        /*border: 1px solid #ccc;*/
+                        background-color: #535353;
+                        color: #fff;
+                    }
+
+                    /* Style the buttons inside the tab */
+                    .tab button {
+                        background-color: inherit;
+                        float: left;
+                        border: none;
+                        color: #fff;
+                        outline: none;
+                        cursor: pointer;
+                        padding: 14px 16px;
+                        transition: 0.3s;
+                        font-size: 17px;
+                    }
+
+                    /* Change background color of buttons on hover */
+                    .tab button:hover {
+                        background-color: #ddd;
+                    }
+
+                    /* Create an active/current tablink class */
+                    .tab button.active {
+                        font-weight: bold;
+                        background-color: red;
+                        color: #FFF;
+                    }
+
+                    /* Style the tab content */
+                    .tabcontent {
+                        display: none;
+                        padding: 6px 12px;
+                        /*border: 1px solid #ccc;*/
+                        border-top: none;
+                    }
+
+                    .agr {
+                        text-align: center;
+                        background: #003F50;
+                        color: #FFF;
+                        height: 100px;
+                        border-radius: 3px;
+                        display: block;
+                    }
+                </style>
+
+
+                <hr />
+                <div class="container">
+                    <div style="font-weight:bold;text-align: center;">
+                        Mitra Dinas Pemberdayaan Perempuan dan Perlindungan Anak
+                    </div>
+                    <br />
+                    <div class="row">
+                        <%for(instansi of instansi){%>
+                            <div style="margin-top:15px;" class="col-lg-3">
+                                <div style="text-align:center;">
+                                    <img src="/images/instansi?size=100&source=<%=instansi.id_instansi%>" />
+
+                                </div>
+                                <div class="agr" style=" margin-top: -30px; padding: 10px;">
+                                    <table style="width:100%; height: 100%;">
+                                        <tr>
+                                            <td style="font-size:13px;">
+                                                <br />
+                                                <%=instansi.nama_instansi%>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <%}%>
+                    </div>
+                </div>
+                <hr />
+
+
+                <script>
+                    function openCity(evt, cityName) {
+                        var i, tabcontent, tablinks;
+                        tabcontent = document.getElementsByClassName("tabcontent");
+                        for (i = 0; i < tabcontent.length; i++) {
+                            tabcontent[i].style.display = "none";
+                        }
+                        tablinks = document.getElementsByClassName("tablinks");
+                        for (i = 0; i < tablinks.length; i++) {
+                            tablinks[i].className = tablinks[i].className.replace(" active", "");
+                        }
+                        document.getElementById(cityName).style.display = "block";
+                        evt.currentTarget.className += " active";
+                    }
+
+                    // Get the element with id="defaultOpen" and click on it
+                    document.getElementById("defaultOpen").click();
+                </script>
+            </div>
+
+        </div>
+        <div class="col-lg-3">
+
+            <div>
+                <div style="text-align:center;">
+                    <img style="width:60%;border-radius:100%;text-align: center;"
+                        src="/images/profil-walikota?size=100" />
+                </div>
+                <div
+                    style="margin-top: -90px;border-radius: 10px;padding:10px;color:#FFF; background:#030098;font-weight:bold;text-align: center; ">
+                    <br /><br />
+                    <br /><br />
+                    Walikota Baubau
+                    <div style="color:#FFF;">
+                        <br />
+
+                        <%=walikota.nama%>
+                            <div style="font-weight: normal; font-size: 11px;">
+                                WALIKOTA BAUBAU </div>
+                            <div style="text-align:center;">
+                                <a href="/index.php/site/lihat_walikota">Selengkapnya</a>
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div>
+                <div style="text-align:center;">
+                    <img style="width:60%;border-radius:100%;text-align: center;"
+                        src="images/profil-kepala-dinas?size=200" />
+                </div>
+                <div
+                    style="margin-top: -90px;padding:10px;border-radius:10px;color:#FFF; background:#FF0000;font-weight:bold;text-align: center; ">
+                    <br /><br />
+                    <br /><br />
+                    Kepala Pemberdayaan Perempuan dan Perlindungan Anak
+                    <div style="color:#FFF;font-size: 11px;">
+                        <br />
+
+                        <%=kepala_dinas.nama%>
+                            <div style="font-weight: normal;">
+                                Kepala Dinas Pemberdayaan Perempuan dan Perlindungan Anak Kota Baubau </div>
+                            <div style="text-align:center;">
+                                <a href="/index.php/site/lihat_kepala_dinas">Selengkapnya</a>
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div style="background:#0052C2; padding: 10px; ">
+                <a href="#" style="font-weight:bold;">POLING</a>
+            </div>
+            <div style="padding:10px; background:#FFF;">
+                <form action="" method="POST">
+                    <div style="font-size:16px; font-weight: bold;">Apakah anda puas dengan layanan kami?</div>
+                    <div>
+                        <label>
+                            <input name="jawaban" type="radio" value="Sangat Puas" title="Puas" />
+                            &nbsp;&nbsp;Sangat Puas
+                        </label>
+                        <br />
+                        <label>
+                            <input name="jawaban" type="radio" value="Puas" title="Puas" />
+                            &nbsp;&nbsp;Puas
+                        </label>
+                        <br />
+                        <label>
+                            <input name="jawaban" type="radio" value="Kurang Puas" title="Puas" />
+                            &nbsp;&nbsp;Kurang Puas
+                        </label>
+                        <br />
+                        <label>
+                            <input name="jawaban" type="radio" value="Buruk" title="Puas" />
+                            &nbsp;&nbsp;Buruk
+                        </label>
+
+
+                    </div>
+                    <% if(!isVote){%>
+                        <button name="kirim" class="btn d btn-danger btn-block">Kirim Vote</button>
+                        <%}else {%>
+                            <center>Anda Telah Melakukan Voting</center>
+                            <%}%>
+                </form>
+            </div>
+            <hr />
+            <div style="background:#0052C2; padding: 10px; ">
+                <a href="#" style="font-weight:bold;">HASIL POLING</a>
+            </div>
+            <div style="padding:10px; background:#FFF;">
+                <table width="100%">
+                    <tr>
+                        <td width="40%">Sangat Puas</td>
+                        <td style="text-align: right;">
+
+                            <div style="width:100%; background: #E6E6E6; border-radius: 4px;">
+                                <div
+                                    style="text-align:left;;width:<%=hasil_poling.sangat_puas%>%;  background: #3FB0FF; border-radius: 4px;">
+                                    <span
+                                        style="font-size:10px; margin-top:2px; margin-bottom: 2px; margin-left: 10px;">
+                                        <%=hasil_poling.sangat_puas%>%
+                                    </span>
+                                </div>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Puas</td>
+                        <td style="text-align: right;">
+                            <div style="width:100%; background: #E6E6E6; border-radius: 4px;">
+                                <div
+                                    style='text-align:left;width:<%=hasil_poling.puas%>%;  background: #3FB0FF; border-radius: 4px;'>
+                                    <span
+                                        style="font-size:10px; margin-top:2px; margin-bottom: 2px; margin-left: 10px;">
+                                        <%=hasil_poling.puas%>%
+                                    </span>
+                                </div>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Kurang Puas</td>
+                        <td style="text-align: right;">
+                            <div style="width:100%; background: #E6E6E6; border-radius: 4px;">
+                                <div
+                                    style="text-align:left;;width:<%=hasil_poling.kurang_puas%>%;  background: #3FB0FF; border-radius: 4px;">
+                                    <span
+                                        style="font-size:10px; margin-top:2px; margin-bottom: 2px; margin-left: 10px;">
+                                        <%=hasil_poling.kurang_puas%>%
+                                    </span>
+                                </div>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Buruk</td>
+                        <td style="text-align: right;">
+                            <div style="width:100%; background: #E6E6E6; border-radius: 4px;">
+                                <div
+                                    style="text-align:left;;width:<%=hasil_poling.buruk%>%;  background: #3FB0FF; border-radius: 4px;">
+                                    <span
+                                        style="font-size:10px; margin-top:2px; margin-bottom: 2px; margin-left: 10px;">
+                                        <%=hasil_poling.buruk%>%
+                                    </span>
+                                </div>
+
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <%for(bannerx of bannerx){%>
+                    <%if(bannerx.lokasi==""){%>
+                        <div style="margin-top:10px;">
+                            <img style="width:100%; border-radius: 2px;"
+                                src="/images/banner?target=<%=bannerx.id_banner%>&size=200" />
+                        </div>
+
+                        <%}}%>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<style>
+    #c-galeri :hover {
+        animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+    }
+</style>
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div>
+                    <div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <a href="/index.php/galeri.html" style="background:#D60000;" class="btn btn-dark float-right">Lihat
+                        Semua</a>
+                    <h3>Galeri Kegiatan</h3>
+                    <hr />
+                    <div class="row">
+                        <% let i=0; for(galeri of galeri){%>
+                            <div class="col-lg-2">
+                                <div id="c-galeri">
+                                    <a href="/lihat-foto.html?index=<%=i%>" title="Klik Untuk melihat foto">
+                                        <img style="width:100%; border-radius: 3px;"
+                                            src="/images/galeri?target=<%=galeri.id_galeri%>&size=100" />
+                                    </a>
+                                </div>
+                            </div>
+                            <% i++;}%>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div style="background:#565656;color:#FFF;" class="container-fluid">
+        <div class="youtube-area video-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="video-items-active">
+                            <%for(video of video){%>
+                                <div class="video-items text-center">
+                                    <iframe src="https://www.youtube.com/embed/<%=getYtId(video.url_youtube)%>"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                </div>
+                                <%}%>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <div class="video-caption">
+                                <div class="top-caption">
+                                    <span class="color1">Youtube Video</span>
+                                </div>
+                                <div style="color:#FFF;" class="bottom-caption">
+                                    <h2 style="color:#fff;">Dinas Pemberdayaan Perempuan dan Perlindungan Anak Kota
+                                        Baubau</h2>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="testmonial-nav text-center">
+                                <div class="single-video">
+                                    <iframe src="https://www.youtube.com/embed/-SpBddFDAEo" frameborder="0"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                    <div class="video-intro">
+                                        <h4 style="color:#FFF;">Bullying Short Movie</h4>
+                                    </div>
+                                </div>
+                                <div class="single-video">
+                                    <iframe src="https://www.youtube.com/embed/NHmmQU7fdQo" frameborder="0"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                    <div class="video-intro">
+                                        <h4 style="color:#FFF;">Short Movie - KDRT (Media Komunikasi, Informasi dan
+                                            Edukasi/KIE)</h4>
+                                    </div>
+                                </div>
+                                <div class="single-video">
+                                    <iframe src="https://www.youtube.com/embed/pQlchPdP6kk" frameborder="0"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                    <div class="video-intro">
+                                        <h4 style="color:#FFF;">DP3A dan Bapas Kota Baubau Buka Pelayanan Konseling,
+                                            Konsultasi
+                                            Psikologi
+                                            dan Hukum Gratis</h4>
+                                    </div>
+                                </div>
+                                <div class="single-video">
+                                    <iframe src="https://www.youtube.com/embed/OQ2tOTU4fik" frameborder="0"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                    <div class="video-intro">
+                                        <h4 style="color:#FFF;">Puspaga DP3A dan Komunitas Kesehatan Jiwa kota Baubau
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="single-video">
+                                    <iframe src="https://www.youtube.com/embed/5lru4dfPSWI" frameborder="0"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                    <div class="video-intro">
+                                        <h4 style="color:#FFF;">Pusat Pembelajaran Keluarga (Puspaga) DP3A Kota Baubau
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="single-video">
+                                    <iframe src="https://www.youtube.com/embed/CEzMyhgChfU" frameborder="0"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                    <div class="video-intro">
+                                        <h4 style="color:#FFF;">Penandatanganan MOU Pemkot Baubau dengan Organisasi
+                                            Profesi (Biro
+                                            Layanan
+                                            Psikologi Meta)</h4>
+                                    </div>
+                                </div>
+                                <div class="single-video">
+                                    <iframe src="https://www.youtube.com/embed/dRFWGgXq3uE" frameborder="0"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                    <div class="video-intro">
+                                        <h4 style="color:#FFF;">Penggerakan Masyarakat dalam Upaya Pencegahan KtPA dan
+                                            TPPO</h4>
+                                    </div>
+                                </div>
+                                <div class="single-video">
+                                    <iframe src="https://www.youtube.com/embed/19FHxnVagwA" frameborder="0"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                    <div class="video-intro">
+                                        <h4 style="color:#FFF;">kawin lari</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

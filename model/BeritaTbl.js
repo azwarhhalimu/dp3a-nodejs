@@ -4,6 +4,15 @@ const random = require("../utils/rand");
 const TagBeritaTb = require("./TagBeritaTbl");
 const pool = mysql.createPool(dbConfig);
 class BeritaTbl {
+    async getRandom() {
+        const [query] = await pool.query(`
+            SELECT * FROM berita INNER JOIN tags_berita ON berita.tags_berita= tags_berita.id_tags_berita`);
+        console.log(query);
+        if (query.length > 0) {
+            return query;
+        }
+        return [];
+    }
     async get_all() {
         const [getData] = await pool.query("SELECT * FROM berita ORDER BY no DESC");
         const data = [];
@@ -20,6 +29,13 @@ class BeritaTbl {
         }
         console.log(data);
         return data;
+    }
+    async getSingle(id_berita) {
+        const [query] = await pool.query("SELECT * FROM berita WHERE id_berita=?", [id_berita]);
+        if (query.length > 0) {
+            return query[0];
+        }
+        return {};
     }
     async save(idx, form_data) {
 
@@ -59,5 +75,11 @@ class BeritaTbl {
         }
         return "gagal";
     }
+
+    async getBeritaByTags(id_tags) {
+        const [query] = await pool.query("SELECT * FROM berita WHERE tags_berita=?", [id_tags]);
+        return query;
+    }
+
 }
 module.exports = BeritaTbl;

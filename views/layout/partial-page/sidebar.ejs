@@ -1,0 +1,29 @@
+<div class="col-lg-4">
+    <br />
+
+    <div class="blog_right_sidebar">
+        <aside class="single_sidebar_widget popular_post_widget">
+            <h3 class="widget_title">Post Lainnya</h3>
+            <%for(randomberita of randomberita){%>
+                <a href="/lihat-berita/<%=randomberita.id_berita%>/<%=randomberita.judul%>.html">
+                    <div class="media post_item">
+                        <img style="width:100px; border-radius: 5px;"
+                            src="/images/berita?source=<%=randomberita.id_berita%>&size=200" alt="post">
+                        <div class="media-body">
+
+                            <h3>
+                                <%=randomberita.judul%>
+                            </h3>
+
+                            <span class="color1" style="color:#515151">
+                                <%=randomberita.tags_berita%>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                <div style="height: 20px;"></div>
+
+                <%}%>
+        </aside>
+    </div>
+</div>

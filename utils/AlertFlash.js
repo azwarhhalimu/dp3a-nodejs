@@ -3,8 +3,9 @@ const AlertFlash = (req, res, next) => {
     console.log("azwar");
     next();
 }
-const createFlash = (req, pesan) => {
-    req.session.pesan_flash = pesan;
+const createFlash = (req, type, pesan) => {
+    req.session.flash_type = type;
+    req.session.flash_pesan = pesan;
 }
 const sendFlash = (req, res) => {
     if (typeof req.session.pesan_flash != "undefined") {

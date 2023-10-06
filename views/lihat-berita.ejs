@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            <div style="height: 30px;"></div>
+            <div class="about-right mb-90">
+                <div class="about-img">
+                    <img style="width:100%;border-radius: 5px;"
+                        src="/images/berita?source=<%=data.id_berita%>&size=1200" alt="">
+                </div>
+                <div class="section-tittle mb-30 pt-30">
+                    <h3>
+                        <%=data['judul'] %>
+                    </h3>
+                </div>
+                <div class="about-prea">
+                    <div>
+                        <%-data['isi'] %>
+                    </div>
+                    <br /><br />
+                    <br /><br />
+                    <div>
+                        <div id="disqus_thread"></div>
+                        <script>
+                            /**
+                             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+                            /*
+                            var disqus_config = function () {
+                            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                            };
+                            */
+                            (function () { // DON'T EDIT BELOW THIS LINE
+                                var d = document,
+                                    s = d.createElement('script');
+                                s.src = 'https://pemadam-1.disqus.com/embed.js';
+                                s.setAttribute('data-timestamp', +new Date());
+                                (d.head || d.body).appendChild(s);
+                            })();
+                        </script>
+                        <noscript>Please enable JavaScript to view the <a
+                                href="https://disqus.com/?ref_noscript">comments
+                                powered
+                                by Disqus.</a></noscript>
+
+                        <script id="dsq-count-scr" src="//dinas-kebakaran.disqus.com/count.js" async></script>
+                    </div>
+                </div>
+                <div class="social-share pt-30">
+                    <div class="section-tittle">
+                        <h3 class="mr-20">Share:</h3>
+                        <ul>
+                            <li><a href="#"><img src="<?= baseUrl() ?>/template/assets/img/news/icon-ins.png"
+                                        alt=""></a>
+                            </li>
+                            <li><a href="#"><img src="<?= baseUrl() ?>/template/assets/img/news/icon-fb.png" alt=""></a>
+                            </li>
+                            <li><a href="#"><img src="<?= baseUrl() ?>/template/assets/img/news/icon-tw.png" alt=""></a>
+                            </li>
+                            <li><a href="#"><img src="<?= baseUrl() ?>/template/assets/img/news/icon-yo.png" alt=""></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('layout/partial-page/sidebar.ejs')%>
+    </div>
+</div>

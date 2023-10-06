@@ -11,6 +11,9 @@ const ImageRoute = require("./Routing/ImageRouting");
 const session = require("express-session");
 const LoginPage = require("./Controller/LoginController");
 const flash = require("connect-flash");
+const MenuProfilTbl = require("./model/MenuProfiltbl");
+const TagBeritaTb = require("./model/TagBeritaTbl");
+const TitleToLink = require("./utils/titleTolink");
 // setting template
 app.set("view engine", "ejs");
 
@@ -25,9 +28,16 @@ app.use("/jcrop", express.static("public/jcrop"));
 //routing
 //midlele ware
 
+
 app.set("layout", "./layout/layouts.ejs");
-app.use("/", (req, res, next) => {
+app.use("/", async (req, res, next) => {
+
+    const menu_profil = await new MenuProfilTbl().getAll();
+    const kategori_berita = await new TagBeritaTb().getAll();
+    app.locals.menu = { menu_profil: menu_profil, tags_berita: kategori_berita };
+    app.locals.func = { titleToLink: TitleToLink }
     app.set("layout", "./layout/layouts.ejs");
+    app.locals.req = req;
     next();
 })
 app.use(session({

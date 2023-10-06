@@ -1,0 +1,63 @@
+<div style="height:40px"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- Trending Tittle -->
+
+            <div>
+                <h2 class="contact-title">Masukkan Pesan Anda</h2>
+                <form class="form-contact contact_form" action="" method="POST">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <textarea class="form-control w-100" name="pesan" required="" maxlength="240"
+                                    id="message" cols="30" rows="9" placeholder=" Masukkan pesan anda"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input class="form-control valid" required="" name="nama" id="nama" type="text"
+                                    placeholder="Masukkan nama anda">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input class="form-control valid" name="email" required="" id="email" type="email"
+                                    placeholder="Masukkan email">
+                            </div>
+                        </div>
+
+                    </div>
+                    <img style="border:2px solid blue; padding:10px" src="/captcha" />
+                    <input type="text" style="padding:10px" required name="captcha" maxlength="4"
+                        placeholder="Ketikkan kode samping" />
+                    <div class="form-group mt-3">
+                        <button name="simpan" type="submit" class="button button-contactForm boxed-btn">Kirim</button>
+                    </div>
+                </form>
+            </div>
+
+            <% for(data of data){%>
+                <div style="border:1px solid #DFDFDF; border-radius: 3px;">
+                    <div style="background:#525252;color: #FFF; font-weight: bold; padding: 10px;">
+                        <table>
+                            <tr>
+                                <td width=" 80px">
+                                    <img style="width: 30px; border-radius: 4px;" src="/assets/profil.png" />
+                                </td>
+                                <td>
+                                    <%=data.nama%>
+                                        <div style="font-size: 12px;"><%-data.tanggal%></div>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="border:0px solid #DFDFDF; padding: 10px;">
+                        <%=data.pesan%>
+                    </div>
+                </div>
+                <%}%>
+        </div>
+    </div>
+</div>
