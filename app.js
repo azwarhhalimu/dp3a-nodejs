@@ -14,6 +14,7 @@ const flash = require("connect-flash");
 const MenuProfilTbl = require("./model/MenuProfiltbl");
 const TagBeritaTb = require("./model/TagBeritaTbl");
 const TitleToLink = require("./utils/titleTolink");
+const api_routing = require("./Routing/ApiRouting");
 // setting template
 app.set("view engine", "ejs");
 
@@ -55,18 +56,32 @@ app.use((err, req, res, next) => {
     // Render a custom error page
     res.status(500).render('error', { error: err });
 });
+
+
+app.use(function (err, req, res, next) {
+    res.sendStatus(500);
+    res.render('500');
+});
+
+//send the user to 500 page without shutting down the server
+process.on('uncaughtException', function (err) {
+    console.log('-------------------------- Caught exception: ' + err);
+    app.use(function (err, req, res, next) {
+        res.render('500');
+    });
+});
 app.use(bodyParse.urlencoded({ extended: false }))
 app.use(bodyParse.json());
 app.use("/admin", (req, res, next) => {
 
 
-    req.session.login = JSON.stringify({
-        no: 3,
-        id_user: '78888',
-        username: 'okos',
-        password: 'bW5ofg==',
-        nama: 'DP3A BAUBAU'
-    })
+    // req.session.login = JSON.stringify({
+    //     no: 3,
+    //     id_user: '78888',
+    //     username: 'okos',
+    //     password: 'bW5ofg==',
+    //     nama: 'DP3A BAUBAU'
+    // })
 
     app.use(express.urlencoded({ extended: true }));
 
@@ -83,6 +98,11 @@ app.use("/admin", (req, res, next) => {
     }
 
 })
+app.use("/api", (req, res, next) => {
+    res.type("json")
+    next()
+});
+app.use("/api", api_routing);
 
 process.on('uncaughtException', function (err) {
     console.error(err);
@@ -94,6 +114,8 @@ app.all("/login.html", LoginPage)
 app.use("/", siteRouting);
 app.use("/admin", admin_routing);
 app.use("/images", ImageRoute);
+
+
 
 
 const port = 2000;

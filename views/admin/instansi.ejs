@@ -60,7 +60,7 @@
                       <%=data.username%>
                     </td>
                     <td>
-                      <%=(data.password)%>
+                      <%=decryptRc(data.password)%>
                     </td>
                   </tr>
                   <% i++; }%>

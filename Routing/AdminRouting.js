@@ -2,7 +2,7 @@ const express = require("express");
 const admin_routing = express.Router();
 const db = require("mysql2/promise");
 const fs = require("fs");
-const { decryptRc } = require("../utils/encryptRc")
+const { decryptRc, encryptRc } = require("../utils/encryptRc")
 const dbConfig = require("../utils/dbConfig");
 const upload_logo_instansi = require("./mid_upload/UploadFileInstansi");
 const sharp = require("sharp");
@@ -79,6 +79,7 @@ admin_routing.get("/instansi.html/:delete?/:id?", async (req, res) => {
         data: query,
         data_table: "true",
         flash: cflash,
+        decryptRc: decryptRc,
         menu: "instansi",
 
         dencrypt: decryptRc
@@ -1272,15 +1273,13 @@ admin_routing.all("/ubah-profil.html", async (req, res) => {
     }
 
 })
-
-
 admin_routing.get("/logout.html", (req, res) => {
     delete req.session.login;
     res.redirect("/login.html");
 })
 
 admin_routing.get("*", (req, res) => {
-    res.status(404).send("terjadi masalah 404");
+    res.status(404).render('admin/404.ejs');
 })
 
 

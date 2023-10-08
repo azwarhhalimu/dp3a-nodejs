@@ -25,4 +25,5 @@ module.exports = class VideoTbl {
         return query;
     }
 
+
 }

@@ -114,6 +114,7 @@ const KategoriDataTerpilahTbl = require("../model/KategoriDataTerpilahTbl");
 const SigaMdl = require("../model/SigaMdl");
 const TahunTbl = require("../model/TahunTbl");
 const DataTerpilahTbl = require("../model/DataTerpilahTbl");
+const c_updatae = require("../model/Main/TestingDb");
 site_router.get('/captcha', async (req, res) => {
     var captcha = capt.create(
     );
@@ -153,5 +154,10 @@ site_router.get("/:id/tampil-data.html", async (req, res) => {
     const tahun = await new TahunTbl().getAll();
     // res.json(data);
     res.render("siga-data/tampil-data.ejs", { data: data, tahun: tahun, tahun2: tahun, data_terpilah: data_terpilah });
+})
+
+site_router.get("/send", async (req, res) => {
+    const c = await c_updatae();
+    res.send('df')
 })
 module.exports = site_router; 
